@@ -14,6 +14,13 @@ using System.IO;
 using System.IO.Compression;
 using System.Net.Http.Headers;
 
+private static string ClientId = GetEnvironmentVariable("CompressSPFile.ClientId")?? "Unknown";
+private static string Cert = GetEnvironmentVariable("CompressSPFile.Cert")?? "Unknown";
+private static string CertPassword = GetEnvironmentVariable("CompressSPFile.CertPassword")?? "Unknown";
+private static string Authority = GetEnvironmentVariable("CompressSPFile.Authority") ?? "https://unknown.com/badurl";
+private static string Resource = GetEnvironmentVariable("CompressSPFile.Resource")?? "Unknown";
+
+
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
     log.Info("C# HTTP trigger function processed a request.");
@@ -83,7 +90,7 @@ private async static Task<ClientContext> GetClientContext(string siteUrl)
 {
     var authenticationContext = new AuthenticationContext(Authority, false);
 
-    var certPath = Path.Combine(Environment.GetEnvironmentVariable("HOME"), "site\\wwwroot\\ProvisionSourceList\\", Cert);
+    var certPath = Path.Combine(Environment.GetEnvironmentVariable("HOME"), "site\\wwwroot\\CompressSPFile\\", Cert);
     var cert = new X509Certificate2(System.IO.File.ReadAllBytes(certPath),
         CertPassword,
         X509KeyStorageFlags.Exportable |
