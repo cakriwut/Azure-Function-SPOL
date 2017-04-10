@@ -1,0 +1,10 @@
+{
+  "frameworks": {
+    "net46": {
+      "dependencies": {
+        "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.13.9",
+        "Microsoft.SharePointOnline.CSOM": "16.1.6323.1200"
+      }
+    }
+  }
+}
