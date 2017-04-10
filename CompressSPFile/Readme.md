@@ -8,3 +8,4 @@ In order to install, configure the deployment from source control to Azure Funct
 3. CompressSPFile.CertPassword: Certificate password
 4. CompressSPFile.Authority : Azure App authentication authority
 5. CompressSPFile.Resource : Azure App authentication resource
+6. 
