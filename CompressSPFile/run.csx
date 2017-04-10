@@ -67,14 +67,15 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
             } 
             log.Info($"Sending zip file ==> { Path.GetFileNameWithoutExtension(fName) }.zip");
             result.Content =  new ByteArrayContent(memStream.ToArray());
-            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") 
-                { FileName = $"{Path.GetFileNameWithoutExtension(fName)}.zip" };
+            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") 
+                { 
+                    FileName = $"{Path.GetFileNameWithoutExtension(fName)}.zip" 
+                };
         }
 
     }
 
-    result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-    
+    result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
     return result;
 }
 
